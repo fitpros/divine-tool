@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Multilingual SEO Meta -->
+    <meta name="description" content="مكتبة إسلامية شاملة - القرآن الكريم، نهج البلاغة، كتب الشيعة | Comprehensive Shia Library | شیعہ لائبریری | کتابخانه شیعه | Bibliothèque Chiite">
+    <meta name="keywords" content="قرآن, نهج البلاغة, شيعة, اسلامی کتب, livre islamique, کتاب اسلامی">
+    
+    <!-- Open Graph Multi-language Support -->
+    <meta property="og:locale" content="ar_AR">
+    <meta property="og:locale:alternate" content="ur_PK">
+    <meta property="og:locale:alternate" content="fa_IR">
+    <meta property="og:locale:alternate" content="fr_FR">
+    
+    <title id="pageTitle">المكتبة الشيعية الإلكترونية</title>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_AD_ID"
+            crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --secondary: #2c5f2d;
+            --accent: #ff9f29;
+            --text: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        [dir="rtl"] body {
+            font-family: 'Amiri', 'Noto Naskh Arabic', Tahoma, sans-serif;
+        }
+
+        [dir="ltr"] body {
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f8f9fa;
+            color: var(--text);
+        }
+
+        .lang-switcher {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.5rem;
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 0;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        .ad-container {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .book-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Noto+Naskh+Urdu&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Language Switcher -->
+    <select class="lang-switcher" id="langSelect">
+        <option value="ar">العربية</option>
+        <option value="ur">اردو</option>
+        <option value="fa">فارسی</option>
+        <option value="fr">Français</option>
+    </select>
+
+    <!-- Top Ad -->
+    <div class="ad-container">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-YOUR_AD_ID"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+    </div>
+
+    <header class="header">
+        <h1 id="mainHeader">المكتبة الشيعية الإلكترونية</h1>
+        <p id="subHeader">مصادر إسلامية معتمدة</p>
+    </header>
+
+    <div class="container">
+        <input type="text" class="search-bar" id="searchInput" placeholder="ابحث عن كتاب...">
+
+        <div class="book-grid" id="bookContainer">
+            <!-- Quran -->
+            <div class="book-card">
+                <h3 data-translate="quran">القرآن الكريم</h3>
+                <p data-translate="quran_desc">المصحف الشريف مع التفسير</p>
+                <button class="btn" onclick="loadBook('quran')" data-translate="read">قراءة</button>
+            </div>
+
+            <!-- Nahjul Balagha -->
+            <div class="book-card">
+                <h3 data-translate="nahjul">نهج البلاغة</h3>
+                <p data-translate="nahjul_desc">كلام الإمام علي (ع)</p>
+                <button class="btn" onclick="loadBook('nahjul')" data-translate="read">قراءة</button>
+            </div>
+
+            <!-- Sahifa Sajjadiya -->
+            <div class="book-card">
+                <h3 data-translate="sahifa">الصحيفة السجادية</h3>
+                <p data-translate="sahifa_desc">أدعية الإمام زين العابدين (ع)</p>
+                <button class="btn" onclick="loadBook('sahifa')" data-translate="read">قراءة</button>
+            </div>
+        </div>
+
+        <!-- Middle Ad -->
+        <div class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_AD_ID"
+                 data-ad-slot="0987654321"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+    </div>
+
+    <script>
+        // Multilingual Content
+        const translations = {
+            ar: {
+                title: "المكتبة الشيعية الإلكترونية",
+                subHeader: "مصادر إسلامية معتمدة",
+                search: "ابحث عن كتاب...",
+                quran: "القرآن الكريم",
+                quran_desc: "المصحف الشريف مع التفسير",
+                nahjul: "نهج البلاغة",
+                nahjul_desc: "كلام الإمام علي (ع)",
+                sahifa: "الصحيفة السجادية",
+                sahifa_desc: "أدعية الإمام زين العابدين (ع)",
+                read: "قراءة"
+            },
+            ur: {
+                title: "شیعہ ڈیجیٹل لائبریری",
+                subHeader: "معتبر اسلامی وسائل",
+                search: "کتاب تلاش کریں...",
+                quran: "قرآن پاک",
+                quran_desc: "مفہم قرآن کے ساتھ",
+                nahjul: "نہج البلاغہ",
+                nahjul_desc: "امام علی (ع) کے اقوال",
+                sahifa: "صحیفہ سجادیہ",
+                sahifa_desc: "امام زین العابدین (ع) کی دعائیں",
+                read: "پڑھیں"
+            },
+            fa: {
+                title: "کتابخانه دیجیتال شیعه",
+                subHeader: "منابع معتبر اسلامی",
+                search: "جستجوی کتاب...",
+                quran: "قرآن کریم",
+                quran_desc: "با تفسیر",
+                nahjul: "نهج البلاغه",
+                nahjul_desc: "کلام امام علی (ع)",
+                sahifa: "صحیفه سجادیه",
+                sahifa_desc: "دعاهای امام سجاد (ع)",
+                read: "مطالعه"
+            },
+            fr: {
+                title: "Bibliothèque Chiite Numérique",
+                subHeader: "Ressources islamiques certifiées",
+                search: "Rechercher un livre...",
+                quran: "Coran",
+                quran_desc: "Avec exégèse",
+                nahjul: "Nahjul Balagha",
+                nahjul_desc: "Paroles de l'Imam Ali (AS)",
+                sahifa: "Sahifa Sajjadiya",
+                sahifa_desc: "Supplications de l'Imam Sajjad (AS)",
+                read: "Lire"
+            }
+        };
+
+        // Language Management
+        let currentLang = 'ar';
+
+        function updateContent() {
+            // Update Document Attributes
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = ['ar', 'ur', 'fa'].includes(currentLang) ? 'rtl' : 'ltr';
+            
+            // Update Text Content
+            document.getElementById('pageTitle').textContent = translations[currentLang].title;
+            document.getElementById('mainHeader').textContent = translations[currentLang].title;
+            document.getElementById('subHeader').textContent = translations[currentLang].subHeader;
+            document.getElementById('searchInput').placeholder = translations[currentLang].search;
+
+            // Update Dynamic Elements
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                element.textContent = translations[currentLang][key];
+            });
+        }
+
+        // Language Selector
+        document.getElementById('langSelect').addEventListener('change', (e) => {
+            currentLang = e.target.value;
+            updateContent();
+        });
+
+        // Initialize Ads
+        (adsbygoogle = window.adsbygoogle || []).push({});
+
+        // Book Loader Function
+        function loadBook(bookId) {
+            // Implement book loading logic
+            alert(`Loading ${bookId} in ${currentLang}`);
+        }
+
+        // Search Functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('.book-card').forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                card.style.display = title.includes(term) ? 'block' : 'none';
+            });
+        });
+
+        // Initial Setup
+        updateContent();
+    </script>
+</body>
+</html>
